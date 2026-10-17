@@ -26,10 +26,22 @@ Tags `dots-vX.Y.Z`. Bare `vX` is the Go era and stays on `dots-releases`.
 
 ### Layout per tag
 
-`dots_darwin_arm64`, `dots_darwin_amd64`, `dots_linux_arm64`,
-`dots_linux_amd64`, same four `dotsd_*`, `dots-config.tar.gz`,
-`bootstrap-release.sh`, `dots.sh`, `checksums.txt` + `.sig`,
-`release.json` + `.sig`.
+`dots_darwin_arm64`, `dots_linux_arm64`, `dots_linux_amd64`, same three
+`dotsd_*`, `dots-config.tar.gz`, `bootstrap-release.sh`, `dots.sh`,
+`checksums.txt` + `.sig`, `release.json` + `.sig`. No `darwin_amd64` leg is
+built.
+
+### Homebrew
+
+```sh
+brew tap TowardInfinity/release https://github.com/TowardInfinity/release
+brew install dots
+```
+
+`Formula/dots.rb` installs the `dots` and `dotsd` binaries of the tag it names
+(macOS arm64, Linux arm64 and amd64), pinned by the shas in that tag's signed
+`checksums.txt`. It installs the binaries only; the config bundle and launcher
+still come from `dots.sh`.
 
 ## anamn
 
